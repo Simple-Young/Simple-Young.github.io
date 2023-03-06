@@ -1,12 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    1111
-</body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+  <head>
+    <title>Cross-Browser QRCode generator for Javascript</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script type="text/javascript" src="http://fanxiaotong.jiangnan.edu.cn/public/default/js/jquery.min.js"></script>
+	<script type="text/javascript" src="http://fanxiaotong.jiangnan.edu.cn/public/self/utf.js"></script>
+	<script type="text/javascript" src="http://fanxiaotong.jiangnan.edu.cn/public/self/jquery.qrcode.js"></script>
+	<style>
+		#content{
+			margin: 0 auto;
+			margin-top: 400px;
+		}
+		#qrcode{
+			margin: 0 auto;
+			width: 420px;
+		}
+	</style>
+  </head>
+  <body>
+	<div id="content">
+		<div id="qrcode"></div>
+	</div>
+	<script type="text/javascript">
+		function makeCode(){
+			time=new Date().getTime();
+			$('#qrcode').empty().qrcode({
+								width: 420,
+								height: 420,
+								text: "user_A3802A6945DFAD6A_"+time/1000,
+								background: "#ffffff",//背景颜色
+								foreground: "#28a745", //前景颜色绿
+								src: 'http://fanxiaotong.jiangnan.edu.cn/public/default/images/logo-sm-2.png'
+							});
+		}
+		$(function(){
+			makeCode();
+			var num=4;
+			setInterval(function(){
+						num +=1;
+						if(num%5 == 0){
+							makeCode();
+						}
+					}, 1000);
+		});
+	</script>
+  </body>
 </html>
